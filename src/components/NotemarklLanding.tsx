@@ -47,17 +47,20 @@ const NotMarkLanding = () => {
     }
   };
 
+  // State to track if download modal is open
+  const [showDownloadModal, setShowDownloadModal] = useState(false);
+  
   const handleDownload = (url: string) => {
-    // Create a temporary anchor element
-    const link = document.createElement('a');
-    link.href = url;
-    link.setAttribute('download', ''); // This triggers download instead of navigation
-    link.setAttribute('target', '_blank'); // Fallback to open in new tab if download fails
-
-    // Append to body, click, and remove
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // Show download modal with instructions
+    setShowDownloadModal(true);
+    
+    // Automatically open the download URL in a new tab
+    window.open(url, '_blank');
+    
+    // Hide modal after 8 seconds
+    setTimeout(() => {
+      setShowDownloadModal(false);
+    }, 8000);
   };
 
   const features = [
@@ -110,6 +113,38 @@ function hello() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      {/* Download Modal */}
+      {showDownloadModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-card p-6 rounded-lg shadow-xl max-w-md w-full">
+            <h3 className="text-xl font-semibold mb-4">Your download is starting</h3>
+            <p className="mb-4">
+              The NoteMark installer is being downloaded from our secure GitHub repository.
+            </p>
+            <p className="mb-4">
+              If your download doesn't start automatically, click the button below:
+            </p>
+            <div className="flex justify-between items-center">
+              <a 
+                href={downloadLinks.windows}
+                className="text-primary hover:underline flex items-center"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Download className="h-4 w-4 mr-2" />
+                Direct download link
+              </a>
+              <Button 
+                variant="outline" 
+                onClick={() => setShowDownloadModal(false)}
+              >
+                Close
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+      
       {/* New Release Banner */}
       <div className="bg-primary/10 py-3 px-4 flex flex-col sm:flex-row items-center justify-center gap-4">
         <div className="flex items-center">
