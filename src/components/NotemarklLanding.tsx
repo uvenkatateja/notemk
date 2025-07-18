@@ -22,21 +22,6 @@ import heroLaptop from "@/assets/hero-laptop.jpg";
 import appPreview from "@/assets/notemark-app-preview.jpg";
 
 const NotMarkLanding = () => {
-  const detectOS = () => {
-    const userAgent = window.navigator.userAgent;
-    const platform = window.navigator.platform;
-    const macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'];
-    const windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'];
-    
-    if (macosPlatforms.indexOf(platform) !== -1) return 'Mac';
-    if (windowsPlatforms.indexOf(platform) !== -1) return 'Windows';
-    if (/Linux/.test(platform)) return 'Linux';
-    
-    return 'Windows'; // Default fallback
-  };
-
-  const currentOS = detectOS();
-
   const features = [
     {
       icon: FileText,
@@ -101,59 +86,85 @@ function hello() {
                 v2.1.0 • Latest Release
               </Badge>
               
-              <div className="space-y-4">
-                <h1 className="text-5xl lg:text-7xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+              <div className="space-y-6">
+                <h1 className="text-6xl lg:text-8xl font-bold bg-gradient-to-r from-foreground via-foreground to-foreground/60 bg-clip-text text-transparent leading-tight">
                   NoteMark
                 </h1>
-                <p className="text-xl lg:text-2xl text-muted-foreground">
-                  Your Modern Markdown Notes
-                </p>
-                <p className="text-lg text-muted-foreground max-w-lg">
-                  A beautiful, fast, and distraction-free markdown editor with dark mode, 
-                  live preview, and powerful file management.
-                </p>
+                <div className="space-y-3">
+                  <p className="text-2xl lg:text-3xl text-foreground/90 font-medium">
+                    Your Modern Markdown Notes
+                  </p>
+                  <p className="text-lg lg:text-xl text-muted-foreground max-w-xl leading-relaxed">
+                    A beautiful, lightning-fast markdown editor with dark mode, 
+                    live preview, and powerful file management. Built for developers and writers.
+                  </p>
+                </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button variant="hero" size="xl" className="group">
-                  <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
-                  Download for {currentOS}
-                </Button>
-                <Button variant="download-secondary" size="xl">
-                  <Github className="mr-2 h-5 w-5" />
-                  View on GitHub
-                </Button>
-              </div>
+              <div className="space-y-6">
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Button variant="hero" size="xl" className="group flex-1 sm:flex-none">
+                    <MonitorSpeaker className="mr-2 h-5 w-5 group-hover:animate-pulse" />
+                    Windows
+                  </Button>
+                  <Button variant="hero" size="xl" className="group flex-1 sm:flex-none">
+                    <Apple className="mr-2 h-5 w-5 group-hover:animate-pulse" />
+                    macOS
+                  </Button>
+                  <Button variant="hero" size="xl" className="group flex-1 sm:flex-none">
+                    <Monitor className="mr-2 h-5 w-5 group-hover:animate-pulse" />
+                    Linux
+                  </Button>
+                </div>
 
-              <div className="flex items-center gap-6 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <Apple className="h-4 w-4" />
-                  <span>macOS</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MonitorSpeaker className="h-4 w-4" />
-                  <span>Windows</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Monitor className="h-4 w-4" />
-                  <span>Linux</span>
+                <div className="grid grid-cols-3 gap-4 text-sm">
+                  <div className="flex flex-col items-center gap-2 p-3 rounded-lg bg-card/30 backdrop-blur">
+                    <MonitorSpeaker className="h-5 w-5 text-primary" />
+                    <span className="font-medium">Windows 10+</span>
+                    <span className="text-xs text-muted-foreground">64-bit</span>
+                  </div>
+                  <div className="flex flex-col items-center gap-2 p-3 rounded-lg bg-card/30 backdrop-blur">
+                    <Apple className="h-5 w-5 text-primary" />
+                    <span className="font-medium">macOS 10.15+</span>
+                    <span className="text-xs text-muted-foreground">Intel & Apple Silicon</span>
+                  </div>
+                  <div className="flex flex-col items-center gap-2 p-3 rounded-lg bg-card/30 backdrop-blur">
+                    <Monitor className="h-5 w-5 text-primary" />
+                    <span className="font-medium">Ubuntu 18.04+</span>
+                    <span className="text-xs text-muted-foreground">x64</span>
+                  </div>
                 </div>
               </div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.2 }}
-              className="relative"
+              initial={{ opacity: 0, scale: 0.8, y: 40 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 1.2, delay: 0.3 }}
+              className="relative lg:mt-0 mt-12"
             >
-              <div className="relative animate-float">
-                <img 
-                  src={heroLaptop} 
-                  alt="NoteMark App Preview" 
-                  className="w-full h-auto rounded-2xl shadow-elegant"
+              <div className="relative">
+                {/* Glow effect behind the image */}
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-blue-600/20 blur-3xl scale-110 animate-glow-pulse" />
+                <div className="relative animate-float">
+                  <img 
+                    src={heroLaptop} 
+                    alt="NoteMark App Preview" 
+                    className="w-full h-auto rounded-2xl shadow-elegant relative z-10"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent rounded-2xl z-20" />
+                </div>
+                {/* Floating elements */}
+                <motion.div 
+                  className="absolute -top-6 -right-6 w-12 h-12 bg-primary/20 rounded-full blur-sm"
+                  animate={{ y: [0, -20, 0], opacity: [0.5, 1, 0.5] }}
+                  transition={{ duration: 4, repeat: Infinity }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent rounded-2xl" />
+                <motion.div 
+                  className="absolute -bottom-4 -left-4 w-8 h-8 bg-blue-500/30 rounded-full blur-sm"
+                  animate={{ y: [0, 15, 0], opacity: [0.3, 0.8, 0.3] }}
+                  transition={{ duration: 3, repeat: Infinity, delay: 1 }}
+                />
               </div>
             </motion.div>
           </div>
@@ -296,12 +307,17 @@ function hello() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="download" size="xl" className="animate-glow-pulse">
-                <Download className="mr-2 h-5 w-5" />
-                Download for {currentOS}
+              <Button variant="download" size="xl" className="animate-glow-pulse group">
+                <MonitorSpeaker className="mr-2 h-5 w-5 group-hover:animate-pulse" />
+                Download for Windows
               </Button>
-              <Button variant="outline" size="xl">
-                All Platforms
+              <Button variant="download" size="xl" className="animate-glow-pulse group">
+                <Apple className="mr-2 h-5 w-5 group-hover:animate-pulse" />
+                Download for macOS
+              </Button>
+              <Button variant="download" size="xl" className="animate-glow-pulse group">
+                <Monitor className="mr-2 h-5 w-5 group-hover:animate-pulse" />
+                Download for Linux
               </Button>
             </div>
 
