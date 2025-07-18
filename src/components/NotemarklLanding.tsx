@@ -13,10 +13,11 @@ import {
   Zap,
   GitBranch,
   Star,
-  Github,
   Apple,
   MonitorSpeaker,
-  Smartphone
+  Smartphone,
+  Globe,
+  Laptop
 } from "lucide-react";
 import heroLaptop from "@/assets/hero-laptop.jpg";
 import appPreview from "@/assets/notemark-app-preview.jpg";
@@ -71,103 +72,136 @@ function hello() {
 > Beautiful quotes and much more...`;
 
   return (
-    <div className="min-h-screen bg-gradient-primary text-foreground dark">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="container mx-auto px-6 py-20 lg:py-32">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 60 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="space-y-8"
-            >
-              <Badge variant="secondary" className="w-fit">
-                v2.1.0 • Latest Release
-              </Badge>
-              
-              <div className="space-y-6">
-                <h1 className="text-6xl lg:text-8xl font-bold bg-gradient-to-r from-foreground via-foreground to-foreground/60 bg-clip-text text-transparent leading-tight">
+      <section className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden bg-gradient-to-br from-background via-secondary/30 to-accent/20">
+        {/* Professional background pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--primary)) 1px, transparent 0)`,
+            backgroundSize: '24px 24px'
+          }} />
+        </div>
+        
+        {/* Floating elements */}
+        <div className="absolute inset-0">
+          <motion.div
+            className="absolute top-20 left-10 w-2 h-2 bg-primary/10 rounded-full"
+            animate={{ y: [0, -20, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute top-40 right-20 w-3 h-3 bg-primary/15 rounded-full"
+            animate={{ y: [0, 30, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+          {/* Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-10"
+          >
+            <div className="space-y-8">
+              <motion.h1 
+                className="text-7xl lg:text-8xl font-bold leading-tight"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <span className="bg-gradient-to-r from-primary via-foreground to-primary bg-clip-text text-transparent">
                   NoteMark
-                </h1>
-                <div className="space-y-3">
-                  <p className="text-2xl lg:text-3xl text-foreground/90 font-medium">
-                    Your Modern Markdown Notes
-                  </p>
-                  <p className="text-lg lg:text-xl text-muted-foreground max-w-xl leading-relaxed">
-                    A beautiful, lightning-fast markdown editor with dark mode, 
-                    live preview, and powerful file management. Built for developers and writers.
-                  </p>
-                </div>
-              </div>
+                </span>
+              </motion.h1>
+              
+              <motion.p 
+                className="text-3xl lg:text-4xl text-muted-foreground font-light"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                Professional Markdown Editor
+              </motion.p>
+              
+              <motion.p 
+                className="text-xl lg:text-2xl text-muted-foreground max-w-2xl leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                The most elegant and powerful markdown editor for professionals. 
+                Experience seamless writing with instant preview and advanced features.
+              </motion.p>
+            </div>
 
-              <div className="space-y-6">
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Button variant="hero" size="xl" className="group flex-1 sm:flex-none">
-                    <MonitorSpeaker className="mr-2 h-5 w-5 group-hover:animate-pulse" />
-                    Windows
-                  </Button>
-                  <Button variant="hero" size="xl" className="group flex-1 sm:flex-none">
-                    <Apple className="mr-2 h-5 w-5 group-hover:animate-pulse" />
-                    macOS
-                  </Button>
-                  <Button variant="hero" size="xl" className="group flex-1 sm:flex-none">
-                    <Monitor className="mr-2 h-5 w-5 group-hover:animate-pulse" />
-                    Linux
-                  </Button>
-                </div>
-
-                <div className="grid grid-cols-3 gap-4 text-sm">
-                  <div className="flex flex-col items-center gap-2 p-3 rounded-lg bg-card/30 backdrop-blur">
-                    <MonitorSpeaker className="h-5 w-5 text-primary" />
-                    <span className="font-medium">Windows 10+</span>
-                    <span className="text-xs text-muted-foreground">64-bit</span>
-                  </div>
-                  <div className="flex flex-col items-center gap-2 p-3 rounded-lg bg-card/30 backdrop-blur">
-                    <Apple className="h-5 w-5 text-primary" />
-                    <span className="font-medium">macOS 10.15+</span>
-                    <span className="text-xs text-muted-foreground">Intel & Apple Silicon</span>
-                  </div>
-                  <div className="flex flex-col items-center gap-2 p-3 rounded-lg bg-card/30 backdrop-blur">
-                    <Monitor className="h-5 w-5 text-primary" />
-                    <span className="font-medium">Ubuntu 18.04+</span>
-                    <span className="text-xs text-muted-foreground">x64</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: 40 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 1.2, delay: 0.3 }}
-              className="relative lg:mt-0 mt-12"
+            {/* Features highlight */}
+            <motion.div 
+              className="grid grid-cols-2 gap-6 pt-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
             >
-              <div className="relative">
-                {/* Glow effect behind the image */}
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-blue-600/20 blur-3xl scale-110 animate-glow-pulse" />
-                <div className="relative animate-float">
-                  <img 
-                    src={heroLaptop} 
-                    alt="NoteMark App Preview" 
-                    className="w-full h-auto rounded-2xl shadow-elegant relative z-10"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent rounded-2xl z-20" />
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-primary/10 rounded-lg">
+                  <Zap className="h-5 w-5 text-primary" />
                 </div>
-                {/* Floating elements */}
-                <motion.div 
-                  className="absolute -top-6 -right-6 w-12 h-12 bg-primary/20 rounded-full blur-sm"
-                  animate={{ y: [0, -20, 0], opacity: [0.5, 1, 0.5] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                />
-                <motion.div 
-                  className="absolute -bottom-4 -left-4 w-8 h-8 bg-blue-500/30 rounded-full blur-sm"
-                  animate={{ y: [0, 15, 0], opacity: [0.3, 0.8, 0.3] }}
-                  transition={{ duration: 3, repeat: Infinity, delay: 1 }}
-                />
+                <span className="text-foreground font-medium">Instant Preview</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-primary/10 rounded-lg">
+                  <Moon className="h-5 w-5 text-primary" />
+                </div>
+                <span className="text-foreground font-medium">Dark Mode</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-primary/10 rounded-lg">
+                  <FileText className="h-5 w-5 text-primary" />
+                </div>
+                <span className="text-foreground font-medium">File Management</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-primary/10 rounded-lg">
+                  <Globe className="h-5 w-5 text-primary" />
+                </div>
+                <span className="text-foreground font-medium">Cross Platform</span>
               </div>
             </motion.div>
-          </div>
+          </motion.div>
+          
+          {/* Laptop Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 40 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 0.3 }}
+            className="relative lg:mt-0 mt-12"
+          >
+            <div className="relative">
+              {/* Glow effect behind the image */}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-primary/5 blur-3xl scale-110" />
+              <div className="relative">
+                <img 
+                  src={heroLaptop} 
+                  alt="NoteMark App Preview" 
+                  className="w-full h-auto rounded-2xl shadow-lg border border-border/50"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/10 via-transparent to-transparent rounded-2xl" />
+              </div>
+              {/* Floating elements */}
+              <motion.div 
+                className="absolute -top-6 -right-6 w-12 h-12 bg-primary/10 rounded-full blur-sm"
+                animate={{ y: [0, -20, 0], opacity: [0.5, 1, 0.5] }}
+                transition={{ duration: 4, repeat: Infinity }}
+              />
+              <motion.div 
+                className="absolute -bottom-4 -left-4 w-8 h-8 bg-primary/15 rounded-full blur-sm"
+                animate={{ y: [0, 15, 0], opacity: [0.3, 0.8, 0.3] }}
+                transition={{ duration: 3, repeat: Infinity, delay: 1 }}
+              />
+            </div>
+          </motion.div>
         </div>
       </section>
 

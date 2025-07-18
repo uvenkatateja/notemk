@@ -8,44 +8,44 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* NoteMark Design System - Light mode fallback */
+    /* Professional Light Theme */
     --background: 0 0% 100%;
-    --foreground: 0 0% 7%;
+    --foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 7%;
+    --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 7%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 210 100% 40%;
+    --primary: 221 83% 53%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 16%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 0 0% 22%;
-    --muted-foreground: 0 0% 70%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
 
-    --accent: 0 0% 22%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 210 40% 94%;
+    --accent-foreground: 222 47% 11%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 22%;
-    --input: 0 0% 22%;
-    --ring: 210 100% 40%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 221 83% 53%;
 
-    /* NoteMark specific tokens */
-    --app-black: 0 0% 7%;
-    --app-gray: 0 0% 16%;
-    --app-light-gray: 0 0% 22%;
-    --download-blue: 210 100% 40%;
-    --gradient-primary: linear-gradient(135deg, hsl(0 0% 7%), hsl(0 0% 12%));
-    --gradient-secondary: linear-gradient(180deg, hsl(0 0% 9%), hsl(0 0% 7%));
-    --shadow-elegant: 0 20px 40px -12px hsl(0 0% 0% / 0.5);
-    --shadow-glow: 0 0 60px hsl(210 100% 40% / 0.3);
+    /* Professional NoteMark tokens */
+    --app-primary: 222 47% 11%;
+    --app-secondary: 210 40% 96%;
+    --app-accent: 214 32% 91%;
+    --download-blue: 221 83% 53%;
+    --gradient-primary: linear-gradient(135deg, hsl(0 0% 100%), hsl(210 40% 98%));
+    --gradient-secondary: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 40% 96%));
+    --shadow-elegant: 0 10px 30px -10px hsl(222 47% 11% / 0.1);
+    --shadow-glow: 0 0 40px hsl(221 83% 53% / 0.15);
 
     --radius: 0.5rem;
 
